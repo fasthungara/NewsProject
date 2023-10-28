@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advertisements</title>
+</head>
+<body>
+    <a href="{% url 'Advertisements:index' %}">Ads page</a>
+    {% if user.is_authenticated %}
+    {% if list %}
+    {% for elem in list %}
+    <p>{{ elem.title }}</p>
+    <p>{{ elem.price }}</p>
+    <p>{{ elem.date }}</p>
+    <p>{{ elem.rubric}}</p>
+    <p> --------------------- </p>
+    {% endfor %}
+    {% else %}
+    <h3> Database is empty </h3>
+    {% endif %}
+    {% else %}
+    <h3> You are not authenticated </h3>
+    {% endif %}
+</body>
+</html>
