@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>News!!!</title>
+    <link href="{% static 'main.css' %}" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <div class="login">
+            <a href="{% url 'userblock:login' %}"> Логин</a>
+        </div>
+        <div class="logout">
+            <a href="{% url 'userblock:logout' %}"> Выход</a>
+        </div>
+        <div class="create">
+            <a href="{% url 'newsblock:create' %}" class="create"> Добавить новость</a>
+        </div>
+        <h1 class="headertext">Новости</h1>
+
+    </div>
+    {% if user.is_authenticated %}
+    {% if list %}
+    {% for elem in list %}
+    <div class="news_block">
+        <a href="{% url 'newsblock:details' elem.rubric.id elem.title %}">{{ elem.title }}</a>
+        <p>{{ elem.short_description }}</p>
+        <p>Дата публикации: {{ elem.date }}</p>
+        <a href="{{ elem.rubric.id }}">{{ elem.rubric }}</a>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h3> Database is empty </h3>
+    {% endif %}
+    {% else %}
+    <div class="not_authorised">
+        <h3> You are not authenticated </h3>
+    </div>
+
+    {% endif %}
+</body>
+</html>

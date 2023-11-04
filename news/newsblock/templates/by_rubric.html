@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>{{rubric.name}}</title>
+    <link href="{% static 'main.css' %}" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div id="by_rubric_header">
+        <p>Раздел: {{rubric.name}} </p>
+        <a href="{% url 'newsblock:list' %}"> Назад </a>
+    </div>
+
+
+    {% for elem in news %}
+    <div id="news_block">
+        <p>{{ elem.title }}</p>
+        <p>{{ elem.short_description }}</p>
+        <p>{{ elem.date }}</p>
+    </div>
+    {% endfor %}
+
+</body>
+</html>

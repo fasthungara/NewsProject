@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>{{ new.title }}</title>
+    <link href="{% static 'main.css' %}" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="by_rubric_header">
+        <a class="BackLink" href="{% url 'newsblock:list' %}"> Назад </a>
+        <h1 class="headertext"> Новости </h1>
+    </div>
+    <div class="news_block">
+        <h1>{{ new.title }}</h1>
+        <p class="description">{{ new.description }}</p>
+        <p>Дата публикации: {{ new.date }}</p>
+    </div>
+
+
+</body>
+</html>
